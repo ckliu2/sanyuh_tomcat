@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+	<class name="com.erp.value.ProductType" table="ERP_ProductType">
+		<meta attribute="extends">BaseObject</meta>
+		<id name="id" column="id" unsaved-value="null">
+			<generator class="identity" />
+		</id>
+		<property name="name" type="string"   not-null="true" />
+		<property name="seqNo" type="integer" not-null="true" />
+	</class>
+	
+	<class name="com.erp.value.Product" table="ERP_Product">
+		<meta attribute="extends">BaseObject</meta>
+		<id name="id" column="id" unsaved-value="null">
+			<generator class="identity" />
+		</id>		
+		<many-to-one name="productType" class="com.erp.value.ProductType" />
+		<property name="no" type="string"   not-null="true" />
+		<property name="name" type="string" not-null="true"/>
+		<property name="overview" type="text" />
+		<property name="specification" type="text"  />
+		
+		<many-to-one name="logo" class="com.base.value.UploadedFile" cascade="all" />
+		
+		<!-- photos -->
+		<set name="photos" table="ERP_ProductPhotos" cascade="save-update">
+			<key column="productId" />
+			<many-to-many class="com.base.value.UploadedFile" column="uploadedFileId" />
+		</set>
+		
+		<!-- Downloads -->
+		<set name="downloads" table="ERP_ProductDownloads" cascade="save-update">
+			<key column="productId" />
+			<many-to-many class="com.base.value.UploadedFile" column="uploadedFileId" />
+		</set>
+		
+		<!-- Diagrams -->
+		<set name="diagrams" table="ERP_ProductDiagrams" cascade="save-update">
+			<key column="productId" />
+			<many-to-many class="com.base.value.UploadedFile" column="uploadedFileId" />
+		</set>
+		
+	</class>
+	
+</hibernate-mapping>
