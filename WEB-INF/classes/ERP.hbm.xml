@@ -26,23 +26,41 @@
 		
 		<many-to-one name="logo" class="com.base.value.UploadedFile" cascade="all" />
 		
-		<!-- photos -->
-		<set name="photos" table="ERP_ProductPhotos" cascade="save-update">
-			<key column="productId" />
-			<many-to-many class="com.base.value.UploadedFile" column="uploadedFileId" />
-		</set>
+		<!-- productPhoto1 -->
+		<many-to-one name="productPhoto1" class="com.base.value.UploadedFile" cascade="all" />
+		<many-to-one name="productPhoto2" class="com.base.value.UploadedFile" cascade="all" />
+		<many-to-one name="productPhoto3" class="com.base.value.UploadedFile" cascade="all" />
+		<many-to-one name="productPhoto4" class="com.base.value.UploadedFile" cascade="all" />
+		<many-to-one name="productPhoto5" class="com.base.value.UploadedFile" cascade="all" />
+		<many-to-one name="productPhoto6" class="com.base.value.UploadedFile" cascade="all" />
+		<many-to-one name="productPhoto7" class="com.base.value.UploadedFile" cascade="all" />
+		<many-to-one name="productPhoto8" class="com.base.value.UploadedFile" cascade="all" />
+		<many-to-one name="productPhoto9" class="com.base.value.UploadedFile" cascade="all" />
+		<many-to-one name="productPhoto10" class="com.base.value.UploadedFile" cascade="all" />
 		
-		<!-- Downloads -->
-		<set name="downloads" table="ERP_ProductDownloads" cascade="save-update">
-			<key column="productId" />
-			<many-to-many class="com.base.value.UploadedFile" column="uploadedFileId" />
-		</set>
+		<!-- downloads -->
+		<many-to-one name="download1" class="com.base.value.UploadedFile" cascade="all" />
+		<many-to-one name="download2" class="com.base.value.UploadedFile" cascade="all" />
+		<many-to-one name="download3" class="com.base.value.UploadedFile" cascade="all" />
+		<many-to-one name="download4" class="com.base.value.UploadedFile" cascade="all" />
+		<many-to-one name="download5" class="com.base.value.UploadedFile" cascade="all" />
+		<many-to-one name="download6" class="com.base.value.UploadedFile" cascade="all" />
+		<many-to-one name="download7" class="com.base.value.UploadedFile" cascade="all" />
+		<many-to-one name="download8" class="com.base.value.UploadedFile" cascade="all" />
+		<many-to-one name="download9" class="com.base.value.UploadedFile" cascade="all" />
+		<many-to-one name="download10" class="com.base.value.UploadedFile" cascade="all" />
 		
-		<!-- Diagrams -->
-		<set name="diagrams" table="ERP_ProductDiagrams" cascade="save-update">
-			<key column="productId" />
-			<many-to-many class="com.base.value.UploadedFile" column="uploadedFileId" />
-		</set>
+		<!-- diagrams -->
+		<many-to-one name="diagram1" class="com.base.value.UploadedFile" cascade="all" />
+		<many-to-one name="diagram2" class="com.base.value.UploadedFile" cascade="all" />
+		<many-to-one name="diagram3" class="com.base.value.UploadedFile" cascade="all" />
+		<many-to-one name="diagram4" class="com.base.value.UploadedFile" cascade="all" />
+		<many-to-one name="diagram5" class="com.base.value.UploadedFile" cascade="all" />
+		<many-to-one name="diagram6" class="com.base.value.UploadedFile" cascade="all" />
+		<many-to-one name="diagram7" class="com.base.value.UploadedFile" cascade="all" />
+		<many-to-one name="diagram8" class="com.base.value.UploadedFile" cascade="all" />
+		<many-to-one name="diagram9" class="com.base.value.UploadedFile" cascade="all" />
+		<many-to-one name="diagram10" class="com.base.value.UploadedFile" cascade="all" />
 		
 	</class>
 	

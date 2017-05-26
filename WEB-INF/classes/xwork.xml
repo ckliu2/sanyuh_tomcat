@@ -217,20 +217,16 @@
             <result name="input" type="tiles">productList</result>
         </action>
 
-        <action name="copyProduct" class="productAction" method="copy">
-            <result name="success" type="tiles">productForm</result>
-            <result name="input" type="tiles">productList</result>
-        </action>
 
         <action name="saveProduct" class="productAction">
-            <result name="delete" type="redirect">productList.html</result>
+            <result name="delete" type="redirect">productList.do</result>
             <result name="input" type="tiles">productForm</result>
             <result name="success" type="chain">saveProductWithValidation</result>
         </action>
 
         <action name="saveProductWithValidation" class="productAction" method="save">
             <result name="input" type="tiles">productForm</result>
-            <result name="success">/common/backback.jsp</result>
+            <result name="success" type="tiles">productList</result>
         </action>
 		
 		
