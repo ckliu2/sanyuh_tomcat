@@ -33,6 +33,11 @@
     <bean id="productAction" class="com.erp.web.action.ProductAction" singleton="false">
         <property name="genericManager" ref="ERPManager"/>
     </bean>
+    
+    <bean id="indexAction" class="com.erp.web.action.IndexAction" singleton="false">
+        <property name="genericManager" ref="ERPManager"/>
+    </bean>
+    
 	
 	
 </beans>

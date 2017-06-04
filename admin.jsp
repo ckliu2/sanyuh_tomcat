@@ -14,7 +14,6 @@
     response.setHeader("Cache-control", "no-store");
     response.setHeader("Cache-control", "no-cache");
     response.setDateHeader("Expires", 0);
-
     response.setContentType("text/html;charset=UTF-8");
 %>
 <html>

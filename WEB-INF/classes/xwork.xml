@@ -230,6 +230,22 @@
         </action>
 		
 		
+	 <!-- web -->
+	 
+	    <action name="index" class="indexAction" method="list">
+			<result name="success">/index.jsp</result>
+		</action>
+		
+		<action name="productCategory" class="indexAction" method="list">
+			<result name="success">/erp/productCategory.jsp</result>
+		</action>
+		
+		<action name="product" class="indexAction" method="list">
+			<result name="success">/erp/product.jsp</result>
+		</action>
+		
+		
+		
 
 		
 		
