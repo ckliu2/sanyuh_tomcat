@@ -3,7 +3,7 @@
 	
 <!DOCTYPE html>
 <html>
-<head>
+
 	<link rel="stylesheet" href="${ctx}/css/colorbox.css" />
 	<link rel="stylesheet" href="${ctx}/css/jquery-ui-1.9.1.custom.min.css" />
 	<link rel="stylesheet" href="${ctx}/css/search.css" />
@@ -14,6 +14,24 @@
   <script type="text/javascript" src="${ctx}/scripts/jquery.colorbox.js"></script>
   <script type="text/javascript" src="${ctx}/scripts/product.js"></script>
 	<title>${product.no} - ${product.description} </title>
+	
+<style type="text/css">
+<!--
+li {
+  list-style: none;
+  position: relative;
+}
+li a > img {
+  display: none;
+  position: absolute;
+  top: 10px;
+  left: 150px;
+}
+li a:hover > img {
+  display: block;
+}
+-->
+</style>
 	
 <div class="topBar">
    <div class="logo"><a href="index.do"><img src="images/logo.png" alt="sanyuh Technology Logo" /></a>
@@ -38,7 +56,11 @@
 
 </div>
 
+<%--
 <div><a href="productCategory.do?productType.id=${product.productTypeId}"><img src="images/back.png" border="0"/></a></div>	
+--%>
+
+<div><a href="javascript:history.back()"><img src="images/back.png" border="0"/></a></div>	
 
 <div class="menuBar">
 	
@@ -110,11 +132,25 @@
 	 <div class="scTabTitle">Diagrams</div><div class="scTabContent"><p class="MsoNormal"><span lang="EN-US">
 	 	
  	   <c:forEach var="diagram" items="${product.diagrams}" varStatus="status">  
+ 	   	
+ 	     <ul>
+        <li>
+         <a href="javascript:void(0)">
+          ${diagram.fileName}
+          <img src="${ctx}/<fmt:message key="product.uploadDiagram1.relativeUrl"/>/${product.id}/${diagram.fileName}" width="300" onClick="javascript:showImage('${ctx}/<fmt:message key="product.uploadDiagram1.relativeUrl"/>/${product.id}/${diagram.fileName}');"/>
+         </a>
+        </li>
+       </ul>   
+ 	   	
+ 	   	<%--
  	   	<span class="productDownloadLink">
         <a href="${ctx}/<fmt:message key="product.uploadDiagram1.relativeUrl"/>/${product.id}/${diagram.fileName}" target="_blank">
           ${diagram.fileName}</a>                    
        </span>  
+       --%>
+       
  	    </c:forEach> 
+ 	    
 	
 	 </div>
 	 
@@ -173,6 +209,14 @@
 </div>
 
 </div>
+
+<script>
+	
+function showImage(u){
+	window.open(u);
+}
+
+</script>	
 
 
 </body>

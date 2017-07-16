@@ -18,13 +18,20 @@
 		<id name="id" column="id" unsaved-value="null">
 			<generator class="identity" />
 		</id>		
-		<many-to-one name="productType" class="com.erp.value.ProductType" />
+			
+		<list name="types" cascade="none" lazy="false" table="ERP_Types">
+			<meta attribute="widget">none</meta>
+			<key column="productId" />
+			<index column="idx" />
+			<many-to-many class="com.erp.value.ProductType" column="productTypeId" />
+		</list>
+		
 		<property name="no" type="string"   not-null="true" />
 		<property name="name" type="string" not-null="true"/>
 		<property name="description" type="text"  />
 		<property name="overview" type="text" />
 		<property name="specification" type="text"  />
-		
+		<property name="seqNo" type="integer" not-null="true" />
 		
 		<!-- logo -->
 		<many-to-one name="logo1" class="com.base.value.UploadedFile" cascade="all" />
@@ -37,6 +44,14 @@
 		<many-to-one name="logo8" class="com.base.value.UploadedFile" cascade="all" />
 		<many-to-one name="logo9" class="com.base.value.UploadedFile" cascade="all" />
 		<many-to-one name="logo10" class="com.base.value.UploadedFile" cascade="all" />
+		
+		<many-to-one name="logo11" class="com.base.value.UploadedFile" cascade="all" />
+		<many-to-one name="logo12" class="com.base.value.UploadedFile" cascade="all" />
+		<many-to-one name="logo13" class="com.base.value.UploadedFile" cascade="all" />
+		<many-to-one name="logo14" class="com.base.value.UploadedFile" cascade="all" />
+		<many-to-one name="logo15" class="com.base.value.UploadedFile" cascade="all" />
+		<many-to-one name="logo16" class="com.base.value.UploadedFile" cascade="all" />
+		
 		
 		
 		<!-- productPhoto1 -->

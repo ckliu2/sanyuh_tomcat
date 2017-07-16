@@ -11,38 +11,32 @@
     <tr><td class="cContentTitle" colspan="2" ><fmt:message key="product.form"/></td></tr>
     <tr class="cActionButtonLine">
       <td colspan="2">
-        <input type=button onclick="javascript:history.back()" class="cButton" value="<fmt:message key="common.back"/>" >
-        <ww:if test="recordEditable == true">
+            <input type=button onclick="javascript:window.location='productList.do'" class="cButton" value="<fmt:message key="common.back"/>" >
             <input type="submit" value="<fmt:message key="common.save"/>" class="cButton">&nbsp;
             <input type="reset" value="<fmt:message key="common.reset"/>" class="cButton">&nbsp;
             <ww:if test="product.id != null">
               <input type="submit" name="delete" onClick="javascript:return confirm('<fmt:message key="common.confirmDelete"/>')" value="<fmt:message key="common.delete"/>" class="cButton">
-            </ww:if>
-        </ww:if>
-        <ww:else>
-            <input type="submit" value="<fmt:message key="common.save"/>" class="cButton" DISABLED>&nbsp;
-            <input type="reset" value="<fmt:message key="common.reset"/>" class="cButton" DISABLED>&nbsp;
-            <ww:if test="product.id != null">
-              <input type="submit" name="delete" onClick="javascript:return confirm('<fmt:message key="common.confirmDelete"/>')" value="<fmt:message key="common.delete"/>"  class="cButton" DISABLED>
-            </ww:if>
-        </ww:else>
+            </ww:if>    
       </td>
     </tr>
+  
     
-     <tr><td class="cInputCaption">product class</td>
+    <tr><td class="cInputCaption">product class</td>
         <td class="cInputColumn">
-            <ww:select name="product.productTypeId" 
-               headerKey=""
-               headerValue="%{getText('common.pleaseSelect')}..."
+            <ww:checkboxlist name="typesIds" 
                list="productTypeList"
                listKey="id"
                listValue="name"
-               cssClass="cInputListField"
+               value = "%{typesIds}"
             />
         </td>
     </tr>
     
-    
+     <tr><td class="cInputCaption">product seqNo.<span class="cRequired">*</span></td>
+        <td class="cInputColumn">
+            <ww:textfield name="product.seqNo" value="%{product.seqNo}"  cssClass="cInputTextFieldLong" /><span class="cInputValidationError"><ww:property value="showHtmlErrorMessage('product.seqNo')"/></span>
+        </td>
+    </tr>
     
     <tr><td class="cInputCaption">product no<span class="cRequired">*</span></td>
         <td class="cInputColumn">
@@ -227,8 +221,87 @@
         </ww:if>
         <ww:else>
             <ww:file cssClass="cInputTextFieldLong" cssStyle="height:20px" name="fileLogo10" accept="application/pdf,application/msword,application/vnd.ms-excel,application/vnd.ms-powerpoint,image/gif,image/jpeg,image/bmp,image/png,image/tiff" /><br>
-        </ww:else>                                         
+        </ww:else>  
+        
+        <br>
+        
+        <ww:if test="product.logo11 != null">
+            <input type="checkbox" name="removeLogo11" onclick="if (this.checked == true) document.productForm.fileLogo11.style.display='inline'; else document.productForm.fileLogo11.style.display='none';" value="<ww:property value="product.logo11.fileName"/>"><fmt:message key="common.delete"/>
+            <a href="${ctx}/<fmt:message key="product.uploadLogo11.relativeUrl"/>/<ww:property value="product.id"/>/<ww:property value="product.logo11.fileName"/>"><ww:property value="product.logo11.fileName" /> (<ww:property value="product.logo11.size" /> bytes)</a><br>
+            <ww:file cssClass="cInputTextFieldLong" cssStyle="height:20px;display:none" name="fileLogo11" accept="application/pdf,application/msword,application/vnd.ms-excel,application/vnd.ms-powerpoint,image/gif,image/jpeg,image/bmp,image/png,image/tiff" />
+            <ww:hidden name="product.logo11Id" value="${product.logo11.id}"/>
+            <ww:hidden name="product.logo11FileName" value="${product.logo11.fileName}"/>
+        </ww:if>
+        <ww:else>
+            <ww:file cssClass="cInputTextFieldLong" cssStyle="height:20px" name="fileLogo11" accept="application/pdf,application/msword,application/vnd.ms-excel,application/vnd.ms-powerpoint,image/gif,image/jpeg,image/bmp,image/png,image/tiff" /><br>
+        </ww:else>
+        
+        <br>
+        
+        <ww:if test="product.logo12 != null">
+            <input type="checkbox" name="removeLogo12" onclick="if (this.checked == true) document.productForm.fileLogo12.style.display='inline'; else document.productForm.fileLogo12.style.display='none';" value="<ww:property value="product.logo12.fileName"/>"><fmt:message key="common.delete"/>
+            <a href="${ctx}/<fmt:message key="product.uploadLogo12.relativeUrl"/>/<ww:property value="product.id"/>/<ww:property value="product.logo12.fileName"/>"><ww:property value="product.logo12.fileName" /> (<ww:property value="product.logo12.size" /> bytes)</a><br>
+            <ww:file cssClass="cInputTextFieldLong" cssStyle="height:20px;display:none" name="fileLogo12" accept="application/pdf,application/msword,application/vnd.ms-excel,application/vnd.ms-powerpoint,image/gif,image/jpeg,image/bmp,image/png,image/tiff" />
+            <ww:hidden name="product.logo12Id" value="${product.logo12.id}"/>
+            <ww:hidden name="product.logo12FileName" value="${product.logo12.fileName}"/>
+        </ww:if>
+        <ww:else>
+            <ww:file cssClass="cInputTextFieldLong" cssStyle="height:20px" name="fileLogo12" accept="application/pdf,application/msword,application/vnd.ms-excel,application/vnd.ms-powerpoint,image/gif,image/jpeg,image/bmp,image/png,image/tiff" /><br>
+        </ww:else>
+             
+        <br>
+        
+        <ww:if test="product.logo13 != null">
+            <input type="checkbox" name="removeLogo13" onclick="if (this.checked == true) document.productForm.fileLogo13.style.display='inline'; else document.productForm.fileLogo13.style.display='none';" value="<ww:property value="product.logo13.fileName"/>"><fmt:message key="common.delete"/>
+            <a href="${ctx}/<fmt:message key="product.uploadLogo13.relativeUrl"/>/<ww:property value="product.id"/>/<ww:property value="product.logo13.fileName"/>"><ww:property value="product.logo13.fileName" /> (<ww:property value="product.logo13.size" /> bytes)</a><br>
+            <ww:file cssClass="cInputTextFieldLong" cssStyle="height:20px;display:none" name="fileLogo13" accept="application/pdf,application/msword,application/vnd.ms-excel,application/vnd.ms-powerpoint,image/gif,image/jpeg,image/bmp,image/png,image/tiff" />
+            <ww:hidden name="product.logo13Id" value="${product.logo13.id}"/>
+            <ww:hidden name="product.logo13FileName" value="${product.logo13.fileName}"/>
+        </ww:if>
+        <ww:else>
+            <ww:file cssClass="cInputTextFieldLong" cssStyle="height:20px" name="fileLogo13" accept="application/pdf,application/msword,application/vnd.ms-excel,application/vnd.ms-powerpoint,image/gif,image/jpeg,image/bmp,image/png,image/tiff" /><br>
+        </ww:else>
+        
+        <br>
+        
+        <ww:if test="product.logo14 != null">
+            <input type="checkbox" name="removeLogo14" onclick="if (this.checked == true) document.productForm.fileLogo14.style.display='inline'; else document.productForm.fileLogo14.style.display='none';" value="<ww:property value="product.logo14.fileName"/>"><fmt:message key="common.delete"/>
+            <a href="${ctx}/<fmt:message key="product.uploadLogo14.relativeUrl"/>/<ww:property value="product.id"/>/<ww:property value="product.logo14.fileName"/>"><ww:property value="product.logo14.fileName" /> (<ww:property value="product.logo14.size" /> bytes)</a><br>
+            <ww:file cssClass="cInputTextFieldLong" cssStyle="height:20px;display:none" name="fileLogo14" accept="application/pdf,application/msword,application/vnd.ms-excel,application/vnd.ms-powerpoint,image/gif,image/jpeg,image/bmp,image/png,image/tiff" />
+            <ww:hidden name="product.logo14Id" value="${product.logo14.id}"/>
+            <ww:hidden name="product.logo14FileName" value="${product.logo14.fileName}"/>
+        </ww:if>
+        <ww:else>
+            <ww:file cssClass="cInputTextFieldLong" cssStyle="height:20px" name="fileLogo14" accept="application/pdf,application/msword,application/vnd.ms-excel,application/vnd.ms-powerpoint,image/gif,image/jpeg,image/bmp,image/png,image/tiff" /><br>
+        </ww:else>                                       
                   
+        <br>
+        
+        <ww:if test="product.logo15 != null">
+            <input type="checkbox" name="removeLogo15" onclick="if (this.checked == true) document.productForm.fileLogo15.style.display='inline'; else document.productForm.fileLogo15.style.display='none';" value="<ww:property value="product.logo15.fileName"/>"><fmt:message key="common.delete"/>
+            <a href="${ctx}/<fmt:message key="product.uploadLogo15.relativeUrl"/>/<ww:property value="product.id"/>/<ww:property value="product.logo15.fileName"/>"><ww:property value="product.logo15.fileName" /> (<ww:property value="product.logo15.size" /> bytes)</a><br>
+            <ww:file cssClass="cInputTextFieldLong" cssStyle="height:20px;display:none" name="fileLogo15" accept="application/pdf,application/msword,application/vnd.ms-excel,application/vnd.ms-powerpoint,image/gif,image/jpeg,image/bmp,image/png,image/tiff" />
+            <ww:hidden name="product.logo15Id" value="${product.logo15.id}"/>
+            <ww:hidden name="product.logo15FileName" value="${product.logo15.fileName}"/>
+        </ww:if>
+        <ww:else>
+            <ww:file cssClass="cInputTextFieldLong" cssStyle="height:20px" name="fileLogo15" accept="application/pdf,application/msword,application/vnd.ms-excel,application/vnd.ms-powerpoint,image/gif,image/jpeg,image/bmp,image/png,image/tiff" /><br>
+        </ww:else>
+        
+        <br>
+        
+        <ww:if test="product.logo16 != null">
+            <input type="checkbox" name="removeLogo16" onclick="if (this.checked == true) document.productForm.fileLogo16.style.display='inline'; else document.productForm.fileLogo16.style.display='none';" value="<ww:property value="product.logo16.fileName"/>"><fmt:message key="common.delete"/>
+            <a href="${ctx}/<fmt:message key="product.uploadLogo16.relativeUrl"/>/<ww:property value="product.id"/>/<ww:property value="product.logo16.fileName"/>"><ww:property value="product.logo16.fileName" /> (<ww:property value="product.logo16.size" /> bytes)</a><br>
+            <ww:file cssClass="cInputTextFieldLong" cssStyle="height:20px;display:none" name="fileLogo16" accept="application/pdf,application/msword,application/vnd.ms-excel,application/vnd.ms-powerpoint,image/gif,image/jpeg,image/bmp,image/png,image/tiff" />
+            <ww:hidden name="product.logo16Id" value="${product.logo16.id}"/>
+            <ww:hidden name="product.logo16FileName" value="${product.logo16.fileName}"/>
+        </ww:if>
+        <ww:else>
+            <ww:file cssClass="cInputTextFieldLong" cssStyle="height:20px" name="fileLogo16" accept="application/pdf,application/msword,application/vnd.ms-excel,application/vnd.ms-powerpoint,image/gif,image/jpeg,image/bmp,image/png,image/tiff" /><br>
+        </ww:else>
+        
+        
                       
               </div>	
               
@@ -778,21 +851,12 @@
 
     <tr class="cActionButtonLine">
       <td colspan="2">
-        <input type=button onclick="javascript:history.back()" class="cButton" value="<fmt:message key="common.back"/>" >
-        <ww:if test="recordEditable == true">
+            <input type=button onclick="javascript:window.location='productList.do'" class="cButton" value="<fmt:message key="common.back"/>" >
             <input type="submit" value="<fmt:message key="common.save"/>" class="cButton">&nbsp;
             <input type="reset" value="<fmt:message key="common.reset"/>" class="cButton">&nbsp;
             <ww:if test="product.id != null">
               <input type="submit" name="delete" onClick="javascript:return confirm('<fmt:message key="common.confirmDelete"/>')" value="<fmt:message key="common.delete"/>" class="cButton">
-            </ww:if>
-        </ww:if>
-        <ww:else>
-            <input type="submit" value="<fmt:message key="common.save"/>" class="cButton" DISABLED>&nbsp;
-            <input type="reset" value="<fmt:message key="common.reset"/>" class="cButton" DISABLED>&nbsp;
-            <ww:if test="product.id != null">
-              <input type="submit" name="delete" onClick="javascript:return confirm('<fmt:message key="common.confirmDelete"/>')" value="<fmt:message key="common.delete"/>"  class="cButton" DISABLED>
-            </ww:if>
-        </ww:else>
+            </ww:if> 
       </td>
     </tr>
   </table>

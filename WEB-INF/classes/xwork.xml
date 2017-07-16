@@ -226,7 +226,10 @@
 
         <action name="saveProductWithValidation" class="productAction" method="save">
             <result name="input" type="tiles">productForm</result>
+            <!-- 
             <result name="success" type="tiles">productList</result>
+             -->
+            <result name="success" type="redirect">editProduct.do${xworkParam}</result>
         </action>
 		
 		
