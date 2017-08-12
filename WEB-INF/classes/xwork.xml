@@ -247,10 +247,54 @@
 			<result name="success">/erp/product.jsp</result>
 		</action>
 		
+		<action name="productSearch" class="indexAction" method="list">
+			<result name="success">/erp/productSearch.jsp</result>
+		</action>
 		
 		
+		<!-- Carousel -->
+        <action name="carouselList" class="carouselAction" method="list">
+            <result name="success" type="tiles">carouselList</result>
+            <result name="input" type="tiles">carouselList</result>
+        </action>
+
+        <action name="editCarousel" class="carouselAction" method="edit">
+            <result name="success" type="tiles">carouselForm</result>
+            <result name="input" type="tiles">carouselList</result>
+        </action>
+
+        <action name="copyCarousel" class="carouselAction" method="copy">
+            <result name="success" type="tiles">carouselForm</result>
+            <result name="input" type="tiles">carouselList</result>
+        </action>
+
+        <action name="saveCarousel" class="carouselAction">
+            <result name="delete" type="redirect">carouselList.do</result>
+            <result name="input" type="tiles">carouselForm</result>
+            <result name="success" type="chain">saveCarouselWithValidation</result>
+        </action>
+
+        <action name="saveCarouselWithValidation" class="carouselAction" method="save">
+            <result name="input" type="tiles">carouselForm</result>
+            <result name="success">/common/backback.jsp</result>
+        </action>
+		
+		<!-- Web -->
+		<action name="editWeb" class="webAction" method="edit">
+            <result name="success" type="tiles">webForm</result>            
+        </action>
+        
+         <action name="saveWeb" class="webAction">           
+            <result name="input" type="tiles">webForm</result>
+            <result name="success" type="chain">saveWebWithValidation</result>
+        </action>
+
+        <action name="saveWebWithValidation" class="webAction" method="save">
+            <result name="input" type="tiles">webForm</result>
+            <result name="success" type="redirect">editWeb.do${xworkParam}</result>
+        </action>
 
 		
 		
-			</package>
+	 </package>
 </xwork>

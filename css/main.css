@@ -211,7 +211,7 @@ a img {
 h1 {
 	margin-top: 5px;
 	margin-bottom: 10px;
-	font-size: 20px;
+	font-size: 20px;	
 }
 
 .productSku {
@@ -392,7 +392,9 @@ li.ui-state-hover {
 
 .productDescription, .productSku, .productTagline {
 	margin-left: 20px;
+	background: #999999;
 }
+
 
 .salesText {
 	display: inline-block;
@@ -502,6 +504,7 @@ button {
 
 .menuBar {
 	height: 30px;
+	
 	background: #fff url('img/greyGrad.png') repeat-x;
 /*	background: -webkit-linear-gradient(bottom, #dadada 90%, #fff);
 	background: -moz-linear-gradient(bottom, #dadada 90%, #fff);*/

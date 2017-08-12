@@ -21,10 +21,10 @@
 <div class="sc_store_searchBox ">    
     <form method="post" action="productCategory.do?productType.id=${productType.id}">
         <div class="sc_store_searchBoxLeft">
-            <input type="text" name="searchTerm" class="sc_store_searchBoxInput" />
+            <input type="text" id="keyword" name="keyword" class="sc_store_searchBoxInput" />
         </div>
         <div class="sc_store_searchBoxRight">
-            <button type="submit" class="sc_store_searchBoxButton">
+            <button type="button" class="sc_store_searchBoxButton" onClick="mysearch()">
                 <div class="sc_store_searchBoxIcon"></div> Search
             </button>
         </div>
@@ -61,8 +61,18 @@
                </a>
      </div>    
      <div class="salesText">
-      <h3><a href="product.do?product.id=${product.id}">${product.no} - ${product.name}</a></h3>      
-        ${fn:substring(product.overview, 0, 300)}...
+      <h3><a href="product.do?product.id=${product.id}">${product.no} - ${product.name}</a></h3>  
+      
+      <span id="p${product.id}" style="display:none">
+        ${product.overview}
+      </span>   
+      <span id="msg${product.id}"></span>
+      <script>
+        var m${product.id}=$('#p${product.id}').text();
+        var text${product.id}=m${product.id}.substring(0,300)+'...';
+        $('#msg${product.id}').text(text${product.id}); 
+	    </script>	    
+        
      </div>
   </div>
   
@@ -70,6 +80,13 @@
  
 </div>
 
+<script>
+ function mysearch(){
+    var keyword=$('#keyword').val();
+    var myurl="productSearch.do?keyword="+keyword;
+    window.location.href ="productSearch.do?keyword="+keyword;            	
+  }
+</script>	
 
 <div class="footer">
 
@@ -83,6 +100,11 @@
 </div>
 
 </div>
+
+
+
+
+
 </body>
 
 </html>

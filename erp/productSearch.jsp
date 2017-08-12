@@ -1,7 +1,6 @@
 <%@ include file="/common/unsecureTaglibs.jsp"%>
 <ww:set name="productTypes" value="%{getProductTypeList()}"/>  
-<ww:set name="productType" value="%{getProductTypeById()}"/>  
-<ww:set name="products" value="%{getProductClassByCategory()}"/>  	
+<ww:set name="products" value="%{getProductSearch()}"/>  	
 		
 <!DOCTYPE html>
 <html>
@@ -9,8 +8,17 @@
 <head><link rel="stylesheet" href="${ctx}/css/search.css" />
 <link type="text/css" href="${ctx}/css/main.css" rel="stylesheet" />
 <script src="${ctx}/scripts/jquery-1.7.2.js"></script> 
-<title>${productType.name} - Sanyuh Technology </title>
+<title>Sanyuh Technology </title>
 </head>
+
+<style type="text/css">
+<!--
+.highlight {
+    background-color: yellow;
+}
+-->
+</style>
+
 <body>
 <div class="topBar">
 <div class="logo"><a href="index.do"><img src="images/logo.png" alt="Cypress Technology Logo" /></a>
@@ -21,10 +29,10 @@
 <div class="sc_store_searchBox ">    
     <form method="post" action="productCategory.do?productType.id=${productType.id}">
         <div class="sc_store_searchBoxLeft">
-            <input type="text" name="searchTerm" class="sc_store_searchBoxInput" />
+            <input type="text" id="keyword" name="keyword" class="sc_store_searchBoxInput" />
         </div>
         <div class="sc_store_searchBoxRight">
-            <button type="submit" class="sc_store_searchBoxButton">
+            <button type="button" class="sc_store_searchBoxButton" onClick="mysearch()">
                 <div class="sc_store_searchBoxIcon"></div> Search
             </button>
         </div>
@@ -35,7 +43,7 @@
 </div>
 
 <div class="menuBar">
-	<h1 align="center">${productType.name}</h1>
+	<h1 align="center">${keyword} / numbers: ${fn:length(products)} </h1>
 </div>
 
 <div class="mainContent">
@@ -61,14 +69,26 @@
                </a>
      </div>    
      <div class="salesText">
-      <h3><a href="product.do?product.id=${product.id}">${product.no} - ${product.name}</a></h3>      
-        ${fn:substring(product.overview, 0, 300)}...
+      <h3><a href="product.do?product.id=${product.id}"><span class="productNo">[${status.index+1}] . ${product.no} - ${product.name}</span></a></h3>  
+      
+      <span id="p${product.id}" style="display:none">
+        ${product.overview}
+      </span> 
+        
+      <span class="productOverview" id="msg${product.id}"></span>
+      <script>
+        var m${product.id}=$('#p${product.id}').text();
+        var text${product.id}=m${product.id}.substring(0,300)+'...';
+        $('#msg${product.id}').text(text${product.id}); 
+	    </script>	    
+        
      </div>
   </div>
   
   </c:forEach>
  
 </div>
+
 
 
 <div class="footer">
@@ -83,6 +103,30 @@
 </div>
 
 </div>
+
+
+<script>
+	$(document).ready(function() {
+   var keyWord = '${keyword}'; 
+   var replaceD = '<span class="highlight">' + keyWord + '</span>';
+   $(".productNo, .productOverview").each(function() {
+      var text = $(this).text();
+      text = text.replace(keyWord, replaceD);
+      $(this).html(text);
+   });
+ });
+ 
+ 
+ function mysearch(){
+    var keyword=$('#keyword').val();
+    var myurl="productSearch.do?keyword="+keyword;
+    window.location.href ="productSearch.do?keyword="+keyword;            	
+  }
+  
+</script>	
+
+
+
 </body>
 
 </html>

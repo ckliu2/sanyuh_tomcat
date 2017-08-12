@@ -146,8 +146,30 @@
     <definition name="productForm" extends="default">
         <put name="content" value="/erp/productForm.jsp"/>
     </definition>
+    
+    
+    <!-- 
+    ************************ 
+    * Carousel 
+    ************************
+    -->
+    <definition name="carouselList" extends="default">
+        <put name="content" value="/erp/carouselList.jsp"/>
+    </definition>
+
+    <definition name="carouselForm" extends="default">
+        <put name="content" value="/erp/carouselForm.jsp"/>
+    </definition>
 	
-	
+	<!-- 
+    ************************ 
+    * Web 
+    ************************
+    -->
+
+    <definition name="webForm" extends="default">
+        <put name="content" value="/erp/webForm.jsp"/>
+    </definition>
     
     
 </tiles-definitions>

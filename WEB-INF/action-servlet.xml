@@ -38,6 +38,15 @@
         <property name="genericManager" ref="ERPManager"/>
     </bean>
     
+    
+    <bean id="carouselAction" class="com.erp.web.action.CarouselAction" singleton="false">
+        <property name="genericManager" ref="ERPManager"/>
+    </bean>
+
+    <bean id="webAction" class="com.erp.web.action.WebAction" singleton="false">
+        <property name="genericManager" ref="ERPManager"/>
+    </bean>
+    
 	
 	
 </beans>

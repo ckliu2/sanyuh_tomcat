@@ -8,17 +8,23 @@
 	<link rel="stylesheet" href="${ctx}/css/jquery-ui-1.9.1.custom.min.css" />
 	<link rel="stylesheet" href="${ctx}/css/search.css" />
 	<link type="text/css" href="${ctx}/css/main.css" rel="stylesheet" />
+	
+	
 	<script src="${ctx}/scripts/jquery-1.10.1.min.js"></script>
 	<script type="text/javascript" src="${ctx}/scripts/jquery-1.8.2.min.js"></script>
   <script type="text/javascript" src="${ctx}/scripts/jquery-ui.js"></script>
   <script type="text/javascript" src="${ctx}/scripts/jquery.colorbox.js"></script>
-  <script type="text/javascript" src="${ctx}/scripts/product.js"></script>
+  <script type="text/javascript" src="${ctx}/scripts/product.js"></script>  
+  <!--
+  <script type="text/javascript" src="${ctx}/scripts/cloud-zoom.1.0.2.min.js"></script>
+  <link type="text/css" href="${ctx}/css/cloud-zoom.css" rel="stylesheet" media="screen" />
+  -->
 	<title>${product.no} - ${product.description} </title>
 	
 <style type="text/css">
 <!--
 li {
-  list-style: none;
+  //list-style: none;
   position: relative;
 }
 li a > img {
@@ -30,8 +36,13 @@ li a > img {
 li a:hover > img {
   display: block;
 }
+
+.cloud-zoom { display:block; border: 4px solid #ccc; width:240px; height:320px;}
+   .cloud-zoom img { border:0 none;}
 -->
 </style>
+
+
 	
 <div class="topBar">
    <div class="logo"><a href="index.do"><img src="images/logo.png" alt="sanyuh Technology Logo" /></a>
@@ -56,19 +67,15 @@ li a:hover > img {
 
 </div>
 
-<%--
-<div><a href="productCategory.do?productType.id=${product.productTypeId}"><img src="images/back.png" border="0"/></a></div>	
---%>
-
 <div><a href="javascript:history.back()"><img src="images/back.png" border="0"/></a></div>	
 
-<div class="menuBar">
+<div class="menuBar1">
 	
 
 
 <div class="mainContent">
 
-<h1><div class="productDescription">${product.description}</div></h1>
+<div class="productDescription"><h1>${product.description}</h1></div>
     <div class="productSku">${product.no}</div>
     <div class="productTagline"></div>
 
@@ -104,8 +111,7 @@ li a:hover > img {
    </div>
   </c:forEach> 
     
- 
-  
+
   	
   	
 </div>
@@ -124,34 +130,19 @@ li a:hover > img {
 	
 	
 	
-	 <div class="scTabTitle">Specification</div><div class="scTabContent"><p class="MsoNormal"><span lang="EN-US">
+	 <div class="scTabTitle">Specification</div><div class="scTabContent">
  	    ${product.specification}
 	 </div>
 	 
 	 
-	 <div class="scTabTitle">Diagrams</div><div class="scTabContent"><p class="MsoNormal"><span lang="EN-US">
-	 	
- 	   <c:forEach var="diagram" items="${product.diagrams}" varStatus="status">  
- 	   	
- 	     <ul>
-        <li>
-         <a href="javascript:void(0)">
-          ${diagram.fileName}
-          <img src="${ctx}/<fmt:message key="product.uploadDiagram1.relativeUrl"/>/${product.id}/${diagram.fileName}" width="300" onClick="javascript:showImage('${ctx}/<fmt:message key="product.uploadDiagram1.relativeUrl"/>/${product.id}/${diagram.fileName}');"/>
-         </a>
-        </li>
-       </ul>   
- 	   	
- 	   	<%--
+	 <div class="scTabTitle">Diagrams</div><div class="scTabContent">	 	
+ 	   <c:forEach var="diagram" items="${product.diagrams}" varStatus="status">   	   
  	   	<span class="productDownloadLink">
         <a href="${ctx}/<fmt:message key="product.uploadDiagram1.relativeUrl"/>/${product.id}/${diagram.fileName}" target="_blank">
-          ${diagram.fileName}</a>                    
+          <img src="${ctx}/<fmt:message key="product.uploadDiagram1.relativeUrl"/>/${product.id}/${diagram.fileName}" width="100%"/>
+        </a>                    
        </span>  
-       --%>
-       
  	    </c:forEach> 
- 	    
-	
 	 </div>
 	 
 	 
@@ -197,6 +188,7 @@ li a:hover > img {
 </div>
 
 
+
 <div class="footer">
 
 <div class="footerLeft">
@@ -209,6 +201,8 @@ li a:hover > img {
 </div>
 
 </div>
+
+
 
 <script>
 	

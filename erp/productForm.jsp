@@ -448,12 +448,12 @@
               <ww:if test="product.download1 != null">
             <input type="checkbox" name="removeDownload1" onclick="if (this.checked == true) document.productForm.fileDownload1.style.display='inline'; else document.productForm.fileDownload1.style.display='none';" value="<ww:property value="product.download1.fileName"/>"><fmt:message key="common.delete"/>
             <a href="${ctx}/<fmt:message key="product.uploadDownload1.relativeUrl"/>/<ww:property value="product.id"/>/<ww:property value="product.download1.fileName"/>"><ww:property value="product.download1.fileName" /> (<ww:property value="product.download1.size" /> bytes)</a><br>
-            <ww:file cssClass="cInputTextFieldLong" cssStyle="height:20px;display:none" name="fileDownload1" accept="application/pdf,application/msword,application/vnd.ms-excel,application/vnd.ms-powerpoint,image/gif,image/jpeg,image/bmp,image/png,image/tiff" />
+            <ww:file cssClass="cInputTextFieldLong" cssStyle="height:20px;display:none" name="fileDownload1"  />
             <ww:hidden name="product.download1Id" value="${product.download1.id}"/>
             <ww:hidden name="product.download1FileName" value="${product.download1.fileName}"/>
         </ww:if>
         <ww:else>
-            <ww:file cssClass="cInputTextFieldLong" cssStyle="height:20px" name="fileDownload1" accept="application/pdf,application/msword,application/vnd.ms-excel,application/vnd.ms-powerpoint,image/gif,image/jpeg,image/bmp,image/png,image/tiff" /><br>
+            <ww:file cssClass="cInputTextFieldLong" cssStyle="height:20px" name="fileDownload1"  /><br>
         </ww:else>
         
         <br>
@@ -461,12 +461,12 @@
          <ww:if test="product.download2 != null">
             <input type="checkbox" name="removeDownload2" onclick="if (this.checked == true) document.productForm.fileDownload2.style.display='inline'; else document.productForm.fileDownload2.style.display='none';" value="<ww:property value="product.download2.fileName"/>"><fmt:message key="common.delete"/>
             <a href="${ctx}/<fmt:message key="product.uploadDownload2.relativeUrl"/>/<ww:property value="product.id"/>/<ww:property value="product.download2.fileName"/>"><ww:property value="product.download2.fileName" /> (<ww:property value="product.download2.size" /> bytes)</a><br>
-            <ww:file cssClass="cInputTextFieldLong" cssStyle="height:20px;display:none" name="fileDownload2" accept="application/pdf,application/msword,application/vnd.ms-excel,application/vnd.ms-powerpoint,image/gif,image/jpeg,image/bmp,image/png,image/tiff" />
+            <ww:file cssClass="cInputTextFieldLong" cssStyle="height:20px;display:none" name="fileDownload2"  />
             <ww:hidden name="product.download2Id" value="${product.download2.id}"/>
             <ww:hidden name="product.download2FileName" value="${product.download2.fileName}"/>
         </ww:if>
         <ww:else>
-            <ww:file cssClass="cInputTextFieldLong" cssStyle="height:20px" name="fileDownload2" accept="application/pdf,application/msword,application/vnd.ms-excel,application/vnd.ms-powerpoint,image/gif,image/jpeg,image/bmp,image/png,image/tiff" /><br>
+            <ww:file cssClass="cInputTextFieldLong" cssStyle="height:20px" name="fileDownload2"  /><br>
         </ww:else>
         
         <br>
@@ -474,12 +474,12 @@
         <ww:if test="product.download3 != null">
             <input type="checkbox" name="removeDownload3" onclick="if (this.checked == true) document.productForm.fileDownload3.style.display='inline'; else document.productForm.fileDownload3.style.display='none';" value="<ww:property value="product.download3.fileName"/>"><fmt:message key="common.delete"/>
             <a href="${ctx}/<fmt:message key="product.uploadDownload3.relativeUrl"/>/<ww:property value="product.id"/>/<ww:property value="product.download3.fileName"/>"><ww:property value="product.download3.fileName" /> (<ww:property value="product.download3.size" /> bytes)</a><br>
-            <ww:file cssClass="cInputTextFieldLong" cssStyle="height:20px;display:none" name="fileDownload3" accept="application/pdf,application/msword,application/vnd.ms-excel,application/vnd.ms-powerpoint,image/gif,image/jpeg,image/bmp,image/png,image/tiff" />
+            <ww:file cssClass="cInputTextFieldLong" cssStyle="height:20px;display:none" name="fileDownload3" />
             <ww:hidden name="product.download3Id" value="${product.download3.id}"/>
             <ww:hidden name="product.download3FileName" value="${product.download3.fileName}"/>
         </ww:if>
         <ww:else>
-            <ww:file cssClass="cInputTextFieldLong" cssStyle="height:20px" name="fileDownload3" accept="application/pdf,application/msword,application/vnd.ms-excel,application/vnd.ms-powerpoint,image/gif,image/jpeg,image/bmp,image/png,image/tiff" /><br>
+            <ww:file cssClass="cInputTextFieldLong" cssStyle="height:20px" name="fileDownload3"  /><br>
         </ww:else>
         
         <br>
@@ -487,12 +487,12 @@
         <ww:if test="product.download4 != null">
             <input type="checkbox" name="removeDownload4" onclick="if (this.checked == true) document.productForm.fileDownload4.style.display='inline'; else document.productForm.fileDownload4.style.display='none';" value="<ww:property value="product.download4.fileName"/>"><fmt:message key="common.delete"/>
             <a href="${ctx}/<fmt:message key="product.uploadDownload4.relativeUrl"/>/<ww:property value="product.id"/>/<ww:property value="product.download4.fileName"/>"><ww:property value="product.download4.fileName" /> (<ww:property value="product.download4.size" /> bytes)</a><br>
-            <ww:file cssClass="cInputTextFieldLong" cssStyle="height:20px;display:none" name="fileDownload4" accept="application/pdf,application/msword,application/vnd.ms-excel,application/vnd.ms-powerpoint,image/gif,image/jpeg,image/bmp,image/png,image/tiff" />
+            <ww:file cssClass="cInputTextFieldLong" cssStyle="height:20px;display:none" name="fileDownload4" />
             <ww:hidden name="product.download4Id" value="${product.download4.id}"/>
             <ww:hidden name="product.download4FileName" value="${product.download4.fileName}"/>
         </ww:if>
         <ww:else>
-            <ww:file cssClass="cInputTextFieldLong" cssStyle="height:20px" name="fileDownload4" accept="application/pdf,application/msword,application/vnd.ms-excel,application/vnd.ms-powerpoint,image/gif,image/jpeg,image/bmp,image/png,image/tiff" /><br>
+            <ww:file cssClass="cInputTextFieldLong" cssStyle="height:20px" name="fileDownload4" /><br>
         </ww:else>
         
         <br>
@@ -500,12 +500,12 @@
         <ww:if test="product.download5 != null">
             <input type="checkbox" name="removeDownload5" onclick="if (this.checked == true) document.productForm.fileDownload5.style.display='inline'; else document.productForm.fileDownload5.style.display='none';" value="<ww:property value="product.download5.fileName"/>"><fmt:message key="common.delete"/>
             <a href="${ctx}/<fmt:message key="product.uploadDownload5.relativeUrl"/>/<ww:property value="product.id"/>/<ww:property value="product.download5.fileName"/>"><ww:property value="product.download5.fileName" /> (<ww:property value="product.download5.size" /> bytes)</a><br>
-            <ww:file cssClass="cInputTextFieldLong" cssStyle="height:20px;display:none" name="fileDownload5" accept="application/pdf,application/msword,application/vnd.ms-excel,application/vnd.ms-powerpoint,image/gif,image/jpeg,image/bmp,image/png,image/tiff" />
+            <ww:file cssClass="cInputTextFieldLong" cssStyle="height:20px;display:none" name="fileDownload5" />
             <ww:hidden name="product.download5Id" value="${product.download5.id}"/>
             <ww:hidden name="product.download5FileName" value="${product.download5.fileName}"/>
         </ww:if>
         <ww:else>
-            <ww:file cssClass="cInputTextFieldLong" cssStyle="height:20px" name="fileDownload5" accept="application/pdf,application/msword,application/vnd.ms-excel,application/vnd.ms-powerpoint,image/gif,image/jpeg,image/bmp,image/png,image/tiff" /><br>
+            <ww:file cssClass="cInputTextFieldLong" cssStyle="height:20px" name="fileDownload5" /><br>
         </ww:else>
         
         <br>
@@ -513,12 +513,12 @@
         <ww:if test="product.download6 != null">
             <input type="checkbox" name="removeDownload6" onclick="if (this.checked == true) document.productForm.fileDownload6.style.display='inline'; else document.productForm.fileDownload6.style.display='none';" value="<ww:property value="product.download6.fileName"/>"><fmt:message key="common.delete"/>
             <a href="${ctx}/<fmt:message key="product.uploadDownload6.relativeUrl"/>/<ww:property value="product.id"/>/<ww:property value="product.download6.fileName"/>"><ww:property value="product.download6.fileName" /> (<ww:property value="product.download6.size" /> bytes)</a><br>
-            <ww:file cssClass="cInputTextFieldLong" cssStyle="height:20px;display:none" name="fileDownload6" accept="application/pdf,application/msword,application/vnd.ms-excel,application/vnd.ms-powerpoint,image/gif,image/jpeg,image/bmp,image/png,image/tiff" />
+            <ww:file cssClass="cInputTextFieldLong" cssStyle="height:20px;display:none" name="fileDownload6"/>
             <ww:hidden name="product.download6Id" value="${product.download6.id}"/>
             <ww:hidden name="product.download6FileName" value="${product.download6.fileName}"/>
         </ww:if>
         <ww:else>
-            <ww:file cssClass="cInputTextFieldLong" cssStyle="height:20px" name="fileDownload6" accept="application/pdf,application/msword,application/vnd.ms-excel,application/vnd.ms-powerpoint,image/gif,image/jpeg,image/bmp,image/png,image/tiff" /><br>
+            <ww:file cssClass="cInputTextFieldLong" cssStyle="height:20px" name="fileDownload6"/><br>
         </ww:else>        
         
         <br>
@@ -526,12 +526,12 @@
         <ww:if test="product.download7 != null">
             <input type="checkbox" name="removeDownload7" onclick="if (this.checked == true) document.productForm.fileDownload7.style.display='inline'; else document.productForm.fileDownload7.style.display='none';" value="<ww:property value="product.download7.fileName"/>"><fmt:message key="common.delete"/>
             <a href="${ctx}/<fmt:message key="product.uploadDownload7.relativeUrl"/>/<ww:property value="product.id"/>/<ww:property value="product.download7.fileName"/>"><ww:property value="product.download7.fileName" /> (<ww:property value="product.download7.size" /> bytes)</a><br>
-            <ww:file cssClass="cInputTextFieldLong" cssStyle="height:20px;display:none" name="fileDownload7" accept="application/pdf,application/msword,application/vnd.ms-excel,application/vnd.ms-powerpoint,image/gif,image/jpeg,image/bmp,image/png,image/tiff" />
+            <ww:file cssClass="cInputTextFieldLong" cssStyle="height:20px;display:none" name="fileDownload7"/>
             <ww:hidden name="product.download7Id" value="${product.download7.id}"/>
             <ww:hidden name="product.download7FileName" value="${product.download7.fileName}"/>
         </ww:if>
         <ww:else>
-            <ww:file cssClass="cInputTextFieldLong" cssStyle="height:20px" name="fileDownload7" accept="application/pdf,application/msword,application/vnd.ms-excel,application/vnd.ms-powerpoint,image/gif,image/jpeg,image/bmp,image/png,image/tiff" /><br>
+            <ww:file cssClass="cInputTextFieldLong" cssStyle="height:20px" name="fileDownload7"/><br>
         </ww:else>
         
         <br>
@@ -539,12 +539,12 @@
         <ww:if test="product.download8 != null">
             <input type="checkbox" name="removeDownload8" onclick="if (this.checked == true) document.productForm.fileDownload8.style.display='inline'; else document.productForm.fileDownload8.style.display='none';" value="<ww:property value="product.download8.fileName"/>"><fmt:message key="common.delete"/>
             <a href="${ctx}/<fmt:message key="product.uploadDownload8.relativeUrl"/>/<ww:property value="product.id"/>/<ww:property value="product.download8.fileName"/>"><ww:property value="product.download8.fileName" /> (<ww:property value="product.download8.size" /> bytes)</a><br>
-            <ww:file cssClass="cInputTextFieldLong" cssStyle="height:20px;display:none" name="fileDownload8" accept="application/pdf,application/msword,application/vnd.ms-excel,application/vnd.ms-powerpoint,image/gif,image/jpeg,image/bmp,image/png,image/tiff" />
+            <ww:file cssClass="cInputTextFieldLong" cssStyle="height:20px;display:none" name="fileDownload8"/>
             <ww:hidden name="product.download8Id" value="${product.download8.id}"/>
             <ww:hidden name="product.download8FileName" value="${product.download8.fileName}"/>
         </ww:if>
         <ww:else>
-            <ww:file cssClass="cInputTextFieldLong" cssStyle="height:20px" name="fileDownload8" accept="application/pdf,application/msword,application/vnd.ms-excel,application/vnd.ms-powerpoint,image/gif,image/jpeg,image/bmp,image/png,image/tiff" /><br>
+            <ww:file cssClass="cInputTextFieldLong" cssStyle="height:20px" name="fileDownload8"/><br>
         </ww:else>
         
         <br>
@@ -552,12 +552,12 @@
         <ww:if test="product.download9 != null">
             <input type="checkbox" name="removeDownload9" onclick="if (this.checked == true) document.productForm.fileDownload9.style.display='inline'; else document.productForm.fileDownload9.style.display='none';" value="<ww:property value="product.download9.fileName"/>"><fmt:message key="common.delete"/>
             <a href="${ctx}/<fmt:message key="product.uploadDownload9.relativeUrl"/>/<ww:property value="product.id"/>/<ww:property value="product.download9.fileName"/>"><ww:property value="product.download9.fileName" /> (<ww:property value="product.download9.size" /> bytes)</a><br>
-            <ww:file cssClass="cInputTextFieldLong" cssStyle="height:20px;display:none" name="fileDownload9" accept="application/pdf,application/msword,application/vnd.ms-excel,application/vnd.ms-powerpoint,image/gif,image/jpeg,image/bmp,image/png,image/tiff" />
+            <ww:file cssClass="cInputTextFieldLong" cssStyle="height:20px;display:none" name="fileDownload9"/>
             <ww:hidden name="product.download9Id" value="${product.download9.id}"/>
             <ww:hidden name="product.download9FileName" value="${product.download9.fileName}"/>
         </ww:if>
         <ww:else>
-            <ww:file cssClass="cInputTextFieldLong" cssStyle="height:20px" name="fileDownload9" accept="application/pdf,application/msword,application/vnd.ms-excel,application/vnd.ms-powerpoint,image/gif,image/jpeg,image/bmp,image/png,image/tiff" /><br>
+            <ww:file cssClass="cInputTextFieldLong" cssStyle="height:20px" name="fileDownload9"/><br>
         </ww:else>
         
         <br>
@@ -565,12 +565,12 @@
         <ww:if test="product.download10 != null">
             <input type="checkbox" name="removeDownload10" onclick="if (this.checked == true) document.productForm.fileDownload10.style.display='inline'; else document.productForm.fileDownload10.style.display='none';" value="<ww:property value="product.download10.fileName"/>"><fmt:message key="common.delete"/>
             <a href="${ctx}/<fmt:message key="product.uploadDownload10.relativeUrl"/>/<ww:property value="product.id"/>/<ww:property value="product.download10.fileName"/>"><ww:property value="product.download10.fileName" /> (<ww:property value="product.download10.size" /> bytes)</a><br>
-            <ww:file cssClass="cInputTextFieldLong" cssStyle="height:20px;display:none" name="fileDownload10" accept="application/pdf,application/msword,application/vnd.ms-excel,application/vnd.ms-powerpoint,image/gif,image/jpeg,image/bmp,image/png,image/tiff" />
+            <ww:file cssClass="cInputTextFieldLong" cssStyle="height:20px;display:none" name="fileDownload10"/>
             <ww:hidden name="product.download10Id" value="${product.download10.id}"/>
             <ww:hidden name="product.download10FileName" value="${product.download10.fileName}"/>
         </ww:if>
         <ww:else>
-            <ww:file cssClass="cInputTextFieldLong" cssStyle="height:20px" name="fileDownload10" accept="application/pdf,application/msword,application/vnd.ms-excel,application/vnd.ms-powerpoint,image/gif,image/jpeg,image/bmp,image/png,image/tiff" /><br>
+            <ww:file cssClass="cInputTextFieldLong" cssStyle="height:20px" name="fileDownload10"/><br>
         </ww:else>
         
                       

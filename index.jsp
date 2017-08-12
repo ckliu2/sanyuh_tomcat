@@ -1,5 +1,8 @@
 <%@ include file="/common/unsecureTaglibs.jsp"%>
 <ww:set name="productTypes" value="%{getProductTypeList()}"/>  
+<ww:set name="carousels" value="%{getCarouselList()}"/>  
+<ww:set name="web" value="%{getWebById(1)}"/> 
+	
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -37,7 +40,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand a_navbarlogo" href="index.html"><img class="a_logo" src="images/logo.png" alt="sanyuhlogo" width="125" height="50"></a>
+                        <a class="navbar-brand a_navbarlogo" href="index.do"><img class="a_logo" src="images/logo.png" alt="sanyuhlogo" width="125" height="50"></a>
                     </div>
                     
                     
@@ -46,9 +49,9 @@
                         
                         <form class="navbar-form navbar-right a_navbar-form" role="search">
                             <div class="form-group">
-                                <input type="text" class="form-control visible-sm-inline-block visible-md-inline-block visible-lg-inline-block visible-sm-block a_btnbd" placeholder="Search here...">
+                                <input id="keyword" type="text" class="form-control visible-sm-inline-block visible-md-inline-block visible-lg-inline-block visible-sm-block a_btnbd" placeholder="Search here...">
                             </div>
-                            <button onclick="myFunction()" type="submit" class="btn btn-default visible-sm-inline-block visible-md-inline-block visible-lg-inline-block visible-sm-block a_btnbd">search</button>
+                            <button onclick="mysearch()" type="button" class="btn btn-default visible-sm-inline-block visible-md-inline-block visible-lg-inline-block visible-sm-block a_btnbd">search</button>
                             
                         </form>
                         
@@ -56,7 +59,9 @@
                                 
                                 <li><a href="#L1">Company</a></li>
                                 <li><a href="#L2">Service</a></li>
+                                <!--
                                 <li><a href="#L3">Solutions</a></li>
+                                -->
                                 <li><a href="#L4">Products</a></li>                                
                                 <li><a href="#L5">Contact Us</a></li>
                             </ul>
@@ -76,46 +81,38 @@
                 <div id="carousel-id" class="carousel slide" data-ride="carousel">
                     
                     <ol class="carousel-indicators a_carousel-indicators">
-                        <li data-target="#carousel-id" data-slide-to="0" class="active"></li>
-                        <li data-target="#carousel-id" data-slide-to="1" class=""></li>
-                        <li data-target="#carousel-id" data-slide-to="2" class=""></li>
-                             
+                    	  
+                    	  <c:forEach var="carousel" items="${carousels}" varStatus="status"> 
+                    	  	  <c:set var="active" value="" />
+                    	  	  <ww:if test="${status.index == 0}">
+                    	  	  	 <c:set var="active" value="active" />
+                    	  	  </ww:if>	
+                    	  	  <li data-target="#carousel-id" data-slide-to="${status.index}" class="${active}"></li>
+                    	  </c:forEach>	
+                    
                     </ol>    
                     
-                    <div class="carousel-inner">    
-                        <div class="item active">
-                            <img class="img-responsive" src="images/carousel_products1d.jpg" alt="">                            
+                    <div class="carousel-inner">   
+                    	
+                    	<c:forEach var="carousel" items="${carousels}" varStatus="status"> 
+                    		 <c:set var="active" value="" />
+                    	   <ww:if test="${status.index == 0}">
+                    	  	   <c:set var="active" value="active" />
+                    	   </ww:if>	
+                    	   
+                    		<div class="item ${active}">
+                            <img class="img-responsive" src="${ctx}/upload/carousel/${carousel.id}/${carousel.photo.fileName}" alt="">                            
                             <div class="container">
                                 <div class="carousel-caption a_carousel_text">
-                                    <h2>1x4 HDMI Video Wall Splitter</h2>
-                                    <p>VWH5-14SP</p>
-                                    <p>HDMI</p>                                    
-                                    <p><a onclick="myFunction()" class="btn btn-sm btn-primary" href="#" role="button">Learn more....</a></p>
+                                    <h2>${carousel.name}</h2>
+                                    ${carousel.content}                                   
+                                    <p><a onclick="goURL('${carousel.url}')" class="btn btn-sm btn-primary" href="#" role="button">Learn more....</a></p>
                                 </div>
                             </div>
                         </div>
-                        <div class="item">
-                            <img class="img-responsive" src="images/carousel_products2d.jpg" alt="">                            
-                            <div class="container">
-                                <div class="carousel-caption a_carousel_text">
-                                    <h2>10 x 10 HDMI/HDBaseT Matrix <br>with Audio Matrixing</h2>
-                                    <p>MXH7-HNH1082T5</p>
-                                    <p>HDMI HDBT</p>
-                                    <p><a onclick="myFunction()" class="btn btn-sm btn-primary" href="#" role="button">Learn more....</a></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <img class="img-responsive" src="images/carousel_products3d.jpg" alt="">                            
-                            <div class="container">
-                                <div class="carousel-caption a_carousel_text">
-                                    <h2>4x1 Video Wall with <br>Seamless Switching</h2>
-                                    <p>VWH3-41SW</p>
-                                    <p>HDMI</p>
-                                    <p><a onclick="myFunction()" class="btn btn-sm btn-primary" href="#" role="button">Learn more....</a></p>
-                                </div>
-                            </div>
-                        </div>
+                        
+                    	</c:forEach>		
+                    	
                     </div>
                     
                     <a class="left carousel-control" href="#carousel-id" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
@@ -132,8 +129,7 @@
                     <ol class="carousel-indicators a_carousel-indicators">
                         <li data-target="#carousel-id" data-slide-to="0" class="active"></li>
                         <li data-target="#carousel-id" data-slide-to="1" class=""></li>
-                        <li data-target="#carousel-id" data-slide-to="2" class=""></li>
-                             
+                        <li data-target="#carousel-id" data-slide-to="2" class=""></li>                        
                     </ol>    
                     
                     <div class="carousel-inner">    
@@ -164,6 +160,7 @@
                                 </div>
                             </div>
                         </div>
+                        
                     </div>
                    
                     <a class="left carousel-control" href="#carousel-id" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
@@ -180,11 +177,14 @@
             <h2 class="text-center">About Company</h2>
             <div id="about" class="container-fluid a_about">
             <div class="row">
-                <div class="col-sm-8">                
-                <p>Sanyuh Technology, a new innovate company with over 10 years of experience, specializing in AV and Multimedia arena. From the analogue century to the digital world, the High-Definition to Ultra High-Definition and the coming 8K UHD, we were there and will always be there the first. We aim to send you the best solution in order you to connect with the best vision.</p><br>
-                <p>With over hundreds of extensive AV product ranges including signal management for home theatre integration, AV signal distribution within Mega Stores, video production, video picture enhancement or signal format conversion, distribution and switching or any incompatibility AV systems, we strive to provide the most simplicity layout with utmost fit utilization functions. Our products includes but not limited to HDM/DVI/3G-SDI Splitter, Extender, Matrix and Switcher, Video Scaler, Repeater/Extender, Signal Generator & Analyzer, Video/TV Wall, Audio Decoder/Encoder, Format Converters, Video over IP and Smart Control System.</p>
-                <p>All products are 100% design and manufacture in Taiwan. An over 100+ of strong R&D team and a time to market production lines, we’re sure to give you the latest technology with the highest quality.</p>
-                
+                <div class="col-sm-8">    
+                	 ${web.home}
+                	 
+                   <!-- 
+                  <p>Sanyuh Technology, a new innovate company with over 10 years of experience, specializing in AV and Multimedia arena. From the analogue century to the digital world, the High-Definition to Ultra High-Definition and the coming 8K UHD, we were there and will always be there the first. We aim to send you the best solution in order you to connect with the best vision.</p><br>
+                  <p>With over hundreds of extensive AV product ranges including signal management for home theatre integration, AV signal distribution within Mega Stores, video production, video picture enhancement or signal format conversion, distribution and switching or any incompatibility AV systems, we strive to provide the most simplicity layout with utmost fit utilization functions. Our products includes but not limited to HDM/DVI/3G-SDI Splitter, Extender, Matrix and Switcher, Video Scaler, Repeater/Extender, Signal Generator & Analyzer, Video/TV Wall, Audio Decoder/Encoder, Format Converters, Video over IP and Smart Control System.</p>
+                  <p>All products are 100% design and manufacture in Taiwan. An over 100+ of strong R&D team and a time to market production lines, we’re sure to give you the latest technology with the highest quality.</p>
+                  -->	
                 </div>
                 <div class="col-sm-4">
                     <div class="pic"><img src="images/company_pic.jpg" alt="company images"></div>
@@ -206,17 +206,16 @@
                 <div class="container">
                     <div class="row a_align">
                         <div class="col-xs-12 col-sm-6 col-md-4 a_pb10">
-                            <img class="img-circle a_choice" src="images/service_1.jpg" alt="our services">
-                            <h4 class="a_textcolor">Diversify Solution</h4>
+                            <img class="img-circle a_choice" src="images/service_1.jpg" alt="our services">   
+                            <h4 class="a_textcolor"><a href="#L3" style="color: #6b7d40 ;line-height: 2;" >Diversify Solution</a></h4>
                         </div>
                         <div class="col-xs-12 col-sm-6 col-md-4 a_pb10">
                             <img class="img-circle a_choice" src="images/service_2.jpg" alt="our services">
-                            <h4 class="a_textcolor">Full Range Products</h4>
+                            <h4 class="a_textcolor"><a href="#L4" style="color: #6b7d40 ;line-height: 2;" >Full Range Products</a></h4>
                         </div>
                         <div class="col-xs-12 col-sm-6 col-md-4 a_pb10">
                             <img class="img-circle a_choice" src="images/service_3.jpg" alt="our services">
-                            
-                            <h4 class="a_textcolor">Reliable Service</h4>                            
+                            <h4 class="a_textcolor"><a href="#L5" style="color: #6b7d40 ;line-height: 2;" >Reliable Service</a></h4>                            
                         </div>  <a name="L3"></a>                      
                     </div>                    
                 </div>                           
@@ -323,8 +322,8 @@
             <p><span class="glyphicon glyphicon-map-marker"></span> PO BOX 4326 Eight Mile Plains QLD 4113 Australia</p>
             <p><span class="glyphicon glyphicon-phone"></span> 0401916587 (Jeffrey Yeh) </p>
             <p><span class="glyphicon glyphicon-phone"></span> 0432280779 (Cindy Jan)</p>
-            <p><span class="glyphicon glyphicon-envelope"></span> jeffrey@sanyuh.com</p>
-            <p><span class="glyphicon glyphicon-envelope"></span> cindy@sanyuh.com</p>
+            <p><span class="glyphicon glyphicon-envelope"></span> <a href="mailto:jeffrey@sanyuh.com" style="font-family:'Glyphicons Halflings';color:#333 ;font-size:16px;">jeffrey@sanyuh.com</a></p>
+            <p><span class="glyphicon glyphicon-envelope"></span> <a href="mailto:cindy@sanyuh.com" style="font-family:'Glyphicons Halflings';color:#333 ;font-size:16px;">cindy@sanyuh.com</a></p>
             </div>
             <div class="col-sm-6 slideanim">
             <div class="row a_row">
@@ -369,13 +368,15 @@ marker.setMap(map);
 
         <script>
             function myFunction() {
-            alert("Under Construction");
-            }
+             alert("Under Construction");
+            }            
         </script>
 
         <script src="https://code.jquery.com/jquery.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script src="js/lightbox-plus-jquery.js"></script>   
+    
+        
     </body>
 </html>
 
@@ -386,4 +387,15 @@ marker.setMap(map);
        $('#productType${status.count}').html('${productype.name}'); 
        $('#productTypeLink${status.count}').attr("href","productCategory.do?productType.id=${productype.id}");       
   </c:forEach>
+  
+  function mysearch(){
+   var keyword=$('#keyword').val();
+   var myurl="productSearch.do?keyword="+keyword;
+   window.location.href =myurl;            	
+  }
+  
+  function goURL(myurl){
+    window.location.href =myurl;        	
+  }
+  
  </script>	

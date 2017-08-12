@@ -4,6 +4,26 @@
     "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 
+    <class name="com.erp.value.Carousel" table="ERP_Carousel">
+		<meta attribute="extends">BaseObject</meta>
+		<id name="id" column="id" unsaved-value="null">
+			<generator class="identity" />
+		</id>		
+		<property name="seqNo" type="integer" not-null="true" />
+		<property name="name" type="string"   />
+		<property name="content" type="string" />
+		<property name="url" type="string" />
+		<many-to-one name="photo" class="com.base.value.UploadedFile" cascade="all" />
+	</class>
+	
+	<class name="com.erp.value.Web" table="ERP_Web">
+		<meta attribute="extends">BaseObject</meta>
+		<id name="id" column="id" unsaved-value="null">
+			<generator class="identity" />
+		</id>	
+		<property name="home" type="text" />		
+	</class>
+
 	<class name="com.erp.value.ProductType" table="ERP_ProductType">
 		<meta attribute="extends">BaseObject</meta>
 		<id name="id" column="id" unsaved-value="null">
