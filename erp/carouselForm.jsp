@@ -14,6 +14,20 @@
             </ww:if>
       </td>
     </tr>
+    
+    <tr><td class="cInputCaption">type</td>
+        <td class="cInputColumn">
+            <ww:select name="carousel.typeId" 
+               headerKey=""
+               headerValue="%{getText('common.pleaseSelect')}..."
+               list="carouselTypes"
+               listKey="id"
+               listValue="valueTw"
+               cssClass="cInputListField"
+            />
+        </td>
+    </tr>
+    
     <tr><td class="cInputCaption">seqNo<span class="cRequired">*</span></td>
         <td class="cInputColumn">
             <ww:textfield name="carousel.seqNo" value="%{carousel.seqNo}" cssClass="cInputTextFieldTiny" /><span class="cInputValidationError"><ww:property value="showHtmlErrorMessage('carousel.seqNo')"/></span>

@@ -1,6 +1,7 @@
 <%@ include file="/common/unsecureTaglibs.jsp"%>
 <ww:set name="productTypes" value="%{getProductTypeList()}"/>  
 <ww:set name="carousels" value="%{getCarouselList()}"/>  
+<ww:set name="solutions" value="%{getSolutionlList()}"/>  
 <ww:set name="web" value="%{getWebById(1)}"/> 
 	
 <!DOCTYPE html>
@@ -59,9 +60,9 @@
                                 
                                 <li><a href="#L1">Company</a></li>
                                 <li><a href="#L2">Service</a></li>
-                                <!--
+                                
                                 <li><a href="#L3">Solutions</a></li>
-                                -->
+                                
                                 <li><a href="#L4">Products</a></li>                                
                                 <li><a href="#L5">Contact Us</a></li>
                             </ul>
@@ -227,34 +228,14 @@
          <div class="container-fluid a_sol_container-fluid">
             <h2 class="text-center">Solution</h2>
 			<div class="row">
-				<div class="col-sm-6 col-md-3 aa bg1">                    
-                        <h4>10x10 Matrix connection diagram</h4>
-                        <img src="images/solution_1s.gif">
-                        <p class="a_textl">Ten HD sources can routed to any of eight destinations via a single Cat.5e/6/7 cable Matrix with Audio Matrixing</p>
-                        <p class="a_textr"><a class="btn btn-sm btn-primary example-image-link" href="images/solution1.jpg" data-lightbox="example-set" data-title="Ten HD sources can routed to any of eight destinations via a single Cat.5e/6/7 cable Matrix with Audio Matrixing" role="button">Learn more....</a></p>                            
-                </div>
-				<div class="col-sm-6 col-md-3 aa bg2">                    
-                        <h4>Video wall</h4>
-                        <img src="images/solution_4s.gif">
-                        <p class="a_textl">4K2K HDMI source to be shown as a single image spanned across multiple displays Video Wall</p>
-                        <p class="a_textr"><a class="btn btn-sm btn-primary example-image-link" href="images/solution4.jpg" data-lightbox="example-set" data-title="4K2K HDMI source to be shown as a single image spanned across multiple displays Video Wall" role="button">Learn more....</a></p>
-                             
-                </div>
-				<div class="col-sm-6 col-md-3 aa bg3">                    
-                        <h4>CDPS-41SQN</h4>
-                        <img src="images/solution_3s.gif">
-                        <p class="a_textl">Ten HD sources can routed to any of eight destinations via a single Cat.5e/6/7 cable Matrix with Audio Matrixing</p>
-                        <p class="a_textr"><a class="btn btn-sm btn-primary example-image-link" href="images/solution3.jpg" data-lightbox="example-set" data-title="Ten HD sources can routed to any of eight destinations via a single Cat.5e/6/7 cable Matrix with Audio Matrixing" role="button">Learn more....</a></p>
-                                                           
-                </div>
-				<div class="col-sm-6 col-md-3 aa bg4">                    
-                        <h4>Wallplate</h4>
-                        <img src="images/solution_2s.gif">
-                        <p class="a_textl">HDMI/HDBaseT Wallplate Transmitter & Receiver</p>
-                        <p class="a_textr"><a class="btn btn-sm btn-primary example-image-link" href="images/solution2.jpg" data-lightbox="example-set" data-title="HDMI/HDBaseT Wallplate Transmitter & Receiver" role="button">Learn more....</a></p>
-                         <a name="L4"></a>                  
-                </div>
-				
+				 <c:forEach var="solution" items="${solutions}" varStatus="status"> 
+				 	<div class="col-sm-6 col-md-3 aa bg${(status.index%4)+1}">                    
+                        <h4>${solution.name}</h4>
+                        <img src="${ctx}/<fmt:message key="carousel.uploadPhoto.relativeUrl"/>/${solution.id}/${solution.photo.fileName}">
+                        <p class="a_textl">${solution.content}</p>
+                        <p class="a_textr"><a onclick="goURL('${solution.url}')" class="btn btn-sm btn-primary" role="button">Learn more....</a></p>
+           </div>
+        </c:forEach>
 			</div>
 		</div>
        
@@ -328,16 +309,16 @@
             <div class="col-sm-6 slideanim">
             <div class="row a_row">
                 <div class="col-sm-6 form-group">
-                <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
+                <input class="form-control" id="sender" name="sender" placeholder="Name" type="text" required>
                 </div>
                 <div class="col-sm-6 form-group">
-                <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
+                <input class="form-control" id="senderEmail" name="senderEmail" placeholder="Email" type="email" required>
                 </div>
             </div>
             <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea><br>
             <div class="row">
                 <div class="col-sm-12 form-group">
-                <button onclick="myFunction()" class="btn btn-default pull-right" type="submit">Send</button>
+                <button onclick="sendMail()" class="btn btn-default pull-right" type="button">Send</button>
                 </div>
             </div>
             </div>
@@ -396,6 +377,27 @@ marker.setMap(map);
   
   function goURL(myurl){
     window.location.href =myurl;        	
+  }
+  
+  function sendMail(){
+  	var sender=$('#sender').val();
+  	var senderEmail=$('#senderEmail').val();
+  	var comments=$('#comments').val();
+  	var content='<strong>sender :</strong> '+sender+'<p><strong>senderEmail :</strong><br>'+senderEmail+'<p><strong>comments  :</strong><br>'+comments;
+  	//alert(sender+'--'+content);
+  	$.ajax({
+      url: 'sendMailJSON.do',
+      type: "POST",
+      dataType:"text",
+      data: {
+         'subject': 'this email is from sanyuh','content':content
+      },
+       success: function(data) {
+        alert('Thank You! We have received your letter as soon as possible to reply to you!');
+       }
+    });
+   
+  	
   }
   
  </script>	

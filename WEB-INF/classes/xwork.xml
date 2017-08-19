@@ -252,6 +252,12 @@
 		</action>
 		
 		
+		<action name="sendMailJSON" class="indexAction" method="list">
+			<result name="success">/erp/sendMailJSON.jsp</result>
+		</action>
+		
+		
+		
 		<!-- Carousel -->
         <action name="carouselList" class="carouselAction" method="list">
             <result name="success" type="tiles">carouselList</result>

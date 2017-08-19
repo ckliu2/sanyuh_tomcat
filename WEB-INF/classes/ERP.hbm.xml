@@ -14,6 +14,7 @@
 		<property name="content" type="string" />
 		<property name="url" type="string" />
 		<many-to-one name="photo" class="com.base.value.UploadedFile" cascade="all" />
+		<many-to-one name="type" class="com.base.value.AppProperty" />
 	</class>
 	
 	<class name="com.erp.value.Web" table="ERP_Web">
@@ -234,5 +235,8 @@
 		<property name="disabled" type="boolean" column="disabled" />
 		
 	</class>
+	
+	
+	
 	
 </hibernate-mapping>

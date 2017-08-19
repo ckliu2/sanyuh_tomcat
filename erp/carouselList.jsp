@@ -12,8 +12,9 @@
       <tr>
         <td>
 <c:set var="count" value="0" />
-<display:table name="carouselList" class="list" cellspacing="1" requestURI="" id="row" export="false" pagesize="${GLOBAL_pagesize}" sort="list">
+<display:table name="list" class="list" cellspacing="1" requestURI="" id="row" export="false" pagesize="${GLOBAL_pagesize}" sort="list">
     <display:setProperty name="paging.banner.placement" value="bottom" />   
+    <display:column property="type.valueTw" sortable="true" title="type" />	
     <display:column property="seqNo" sortable="true" title="seqNo" />
     <display:column property="name" sortable="true" title="name" style="text-align:left" />  
     <display:column property="url" sortable="true" title="url" style="text-align:left" />
