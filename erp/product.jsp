@@ -175,11 +175,11 @@ li a:hover > img {
 
   <div class="productRight">
     <div class="productRightBar"> 
-    	
+    	<%--
      <c:forEach var="logo" items="${product.logos}" varStatus="status">   
     	<div class="productLogo"><img src="${ctx}/<fmt:message key="product.uploadLogo1.relativeUrl"/>/${product.id}/${logo.fileName}" width="100" height="60"/></div>
      </c:forEach> 		
-    	
+    	--%>
        
     </div>
 
