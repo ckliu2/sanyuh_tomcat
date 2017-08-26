@@ -444,7 +444,7 @@ marker.setMap(map);
          'subject': 'this email is from sanyuh','content':content
       },
        success: function(data) {
-        alert('Thank You! We have received your letter as soon as possible to reply to you!');
+        alert('Your message has been send, we will reply back as soon as possible. Thank you');
        }
     });
   	
