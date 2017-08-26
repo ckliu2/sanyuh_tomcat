@@ -12,22 +12,29 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
         <title>Sanyuh</title>
         
-	    <link rel="Shortcut Icon" type="image/x-icon" href="images/logo-xl.png"/>
-	    
-    	<meta name="description" content="smart house">
-	   
+	    <link rel="Shortcut Icon" type="image/x-icon" href="images/logo-xl.png"/>	    
+    	<meta name="description" content="smart house">	   
 	    <meta name="keywords" content="smart house">
-
     	<meta name="author" content="Sanyuh">    	
-
     	<meta property="og:locale" content="zh_TW" /> 
-
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
         <link rel="stylesheet" href="css/bootstrap.css">
         <link rel="stylesheet" href="css/styles.css"> 
         <link rel="stylesheet" href="css/lightbox.css">            
         <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-        <script src="${ctx}/scripts/jquery-1.7.2.js"></script> 
+        <script src="https://code.jquery.com/jquery.js"></script>  
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>        
+        <script src="js/lightbox-plus-jquery.js"></script>  
+        
+<style type="text/css">
+    div.contactForm { width:370px; margin:0 auto; }
+    form.contactUs label { display:block; }
+    form.contactUs input { margin-bottom:10px; }
+    input.submit { margin-top:10px; }
+    input.error { background:#FF9B9B; border:1px solid red; }    
+    textarea.error { background:#FF9B9B; border:1px solid red; }
+    div.errorMessage { color:#f00; padding:0 0 20px; }
+</style>
     </head>
     <body>       
         
@@ -354,10 +361,8 @@ marker.setMap(map);
             }            
         </script>
 
-        <script src="https://code.jquery.com/jquery.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <script src="js/lightbox-plus-jquery.js"></script>   
-    
+       
+  
         
     </body>
 </html>
@@ -386,6 +391,51 @@ marker.setMap(map);
   	var comments=$('#comments').val();
   	var content='<strong>sender :</strong> '+sender+'<p><strong>senderEmail :</strong><br>'+senderEmail+'<p><strong>comments  :</strong><br>'+comments;
   	//alert(sender+'--'+content);
+  	var errmsg=0;
+
+    if (sender == '') {
+    	 errmsg++;
+       $('#sender').addClass('error');      
+       $('#sender').prop('placeholder', 'name is required field');
+       $('#sender').keypress(function(){
+          $('#sender').removeClass('error');
+          $('#sender').prop('placeholder', 'name is required field');
+       });
+    }
+    
+    if (comments == '') {
+    	 errmsg++;
+       $('#comments').addClass('error');      
+       $('#comments').prop('placeholder', 'comments is required field');
+       $('#comments').keypress(function(){
+          $('#comments').removeClass('error');
+          $('#comments').prop('placeholder', 'comments is required field');
+       });
+    }
+  	
+  	if (senderEmail == '') {
+    	 errmsg++;
+       $('#senderEmail').addClass('error');      
+       $('#senderEmail').prop('placeholder', 'senderEmail is required field');
+       $('#senderEmail').keypress(function(){
+          $('#senderEmail').removeClass('error');
+          $('#senderEmail').prop('placeholder', 'senderEmail is required field');
+       });       
+    }
+    
+    if( !validateEmail(senderEmail)) { 
+    	 errmsg++;
+    	 alert('email address is not valid');
+       $('#senderEmail').addClass('error');      
+       $('#senderEmail').keypress(function(){
+          $('#senderEmail').removeClass('error');         
+       });      	
+   }
+   
+   if(errmsg!==0){
+     return false;	
+   }
+   
   	$.ajax({
       url: 'sendMailJSON.do',
       type: "POST",
@@ -397,8 +447,12 @@ marker.setMap(map);
         alert('Thank You! We have received your letter as soon as possible to reply to you!');
        }
     });
-   
   	
+  }
+  
+  function validateEmail($email) {
+    var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+    return emailReg.test( $email );
   }
   
  </script>	
